@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { Container, Button, Typography, Divider } from '@mui/material';
 import { Google as GoogleIcon, Facebook as FacebookIcon } from '@mui/icons-material';
 import './SignInSignUp.css'
-import { color } from 'three/webgpu';
 
 function SignInSignUp() {
   const [isSignIn, setIsSignIn] = useState(true);
