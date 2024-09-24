@@ -1,10 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import SignInSignUp from './SignInSignUp';
-import Dashboard from './Dashboard';
-import TeacherDashboard from './TeacherDashboard';
-import AssignmentManager from './AssignmentManager';
-import Scan from './scan';
+import SignInSignUp from './Components/SignInSignUp';
+import Dashboard from './Components/Dashboard';
+import Scan from './Components/Scan';
+import TeacherDashboard from './Components/TeacherDashboard';
 import './App.css'; 
 import './index.css';
 
@@ -17,7 +16,6 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/scan" element={<Scan />} />
           <Route path="/TeacherDashboard" element={<TeacherDashboard />} />
-          <Route path="/AssignmentManager" element={<AssignmentManager />} />
         </Routes>
       </div>
     </Router>
