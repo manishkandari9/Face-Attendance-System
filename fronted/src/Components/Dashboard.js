@@ -91,7 +91,7 @@ const Dashboard = () => {
                 <DarkModeIcon />
               </IconButton>
               <IconButton color="inherit" >
-              onClick {handlerefreshiconClick}
+               {handlerefreshiconClick}
                 <RefreshIcon />
               </IconButton>
               <IconButton color="inherit">
@@ -258,11 +258,11 @@ const Dashboard = () => {
             </Grid>
           </Grid>
 
-          <Grid container spacing={1} sx={{ mt: 3 }}>
+          <Grid container spacing={2} sx={{ mt: 1 }}>
             <Grid item xs={8}>
               <Paper sx={{ padding: 2, backgroundColor: '#1e1e1e', color: "#07f7ff", border: "1px solid #07f7ff", borderRadius: "20px" }}>
                 <Typography variant="h6" align="center">2nd Year vs 3rd Year Attendance</Typography>
-                <ResponsiveContainer width="100%" height={300}> {/* Smaller height for the chart */}
+                <ResponsiveContainer width="100%" height={250}> {/* Smaller height for the chart */}
                   <LineChart data={attendanceData}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="day" stroke="#07f7ff" />
@@ -278,7 +278,7 @@ const Dashboard = () => {
             <Grid item xs={4}>
               <Grid container spacing={1}>
                 <Grid item xs={6}>
-                  <Paper sx={{ padding: 2, backgroundColor: '#1e1e1e', height: "6.2rem", border: "2px solid white", borderRadius: 2, cursor: 'pointer',transition: 'all 0.3s ease',boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.5)','&:hover': {borderColor: '#00ff00 ',boxShadow: '0px 10px 20px rgba(0, 255, 0, 0.5), 0px 4px 6px rgba(0, 255, 0, 0.3)'} }}>
+                  <Paper sx={{ padding: 2, backgroundColor: '#1e1e1e', height: "6.2rem", border: "2px solid white", borderRadius: 4, cursor: 'pointer',transition: 'all 0.3s ease',boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.5)','&:hover': {borderColor: '#00ff00 ',boxShadow: '0px 10px 20px rgba(0, 255, 0, 0.5), 0px 4px 6px rgba(0, 255, 0, 0.3)'} }}>
                     <Box sx={{ mt: 2 }}>
                       <Box sx={{ height: 5, backgroundColor: '#2e2e2e' }}></Box>
                     </Box>
@@ -286,7 +286,7 @@ const Dashboard = () => {
                 </Grid>
 
                 <Grid item xs={6}>
-                  <Paper sx={{ padding: 2, backgroundColor: '#1e1e1e', height: "6.2rem", border: "2px solid white" }}>
+                  <Paper sx={{ padding: 2, backgroundColor: '#1e1e1e', height: "6.2rem", border: "2px solid white", borderRadius: 4, }}>
                     <Box sx={{ mt: 2 }}>
                       <Box sx={{ height: 4, backgroundColor: '#2e2e2e' }}></Box>
                     </Box>
@@ -294,10 +294,10 @@ const Dashboard = () => {
                 </Grid>
               </Grid>
 
-              <Paper sx={{ padding: 2, backgroundColor: '#1e1e1e', mt: 1, height: "6.5rem", border: "2px solid white" }}>
+              <Paper sx={{ padding: 2, backgroundColor: '#1e1e1e', mt: 1, height: "6rem", border: "2px solid white" }}>
                 <Typography variant="h6">hello</Typography>
               </Paper>
-              <Paper sx={{ padding: 2, backgroundColor: '#1e1e1e', mt: 1, height: "6.5rem", border: "2px solid white" }}>
+              <Paper sx={{ padding: 2, backgroundColor: '#1e1e1e', mt: 1, height: "6rem", border: "2px solid white" }}>
                 <Typography variant="h6">hello</Typography>
               </Paper>
             </Grid>
