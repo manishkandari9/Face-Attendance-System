@@ -1,20 +1,44 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Button, Typography, Divider } from '@mui/material';
-import { Google as GoogleIcon, Facebook as FacebookIcon } from '@mui/icons-material';
-import './SignInSignUp.css'
+import { Google as GoogleIcon } from '@mui/icons-material';
+import './SignInSignUp.css';
 
 function SignInSignUp() {
   const [isSignIn, setIsSignIn] = useState(true);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleToggle = () => {
     setIsSignIn(!isSignIn);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    navigate('/dashboard');
+    
+    const endpoint = isSignIn ? '/api/signin' : '/api/signup';
+    
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      console.log(data); // Handle success (e.g., save token, user info, etc.)
+      navigate('/dashboard');
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle error (e.g., display a message)
+    }
   };
 
   return (
@@ -23,19 +47,6 @@ function SignInSignUp() {
         {isSignIn ? 'Sign in' : 'Sign up'}
       </Typography>
       <form onSubmit={handleSubmit}>
-        {!isSignIn && (
-          <div className="form-group">
-            <label htmlFor="fullName" className="input-label">Full name</label>
-            <input
-              type="text"
-              id="fullName"
-              name="fullName"
-              className="custom-input"
-              placeholder="Full name"
-              required
-            />
-          </div>
-        )}
         <div className="form-group">
           <label htmlFor="email" className="input-label">Email</label>
           <input
@@ -45,6 +56,8 @@ function SignInSignUp() {
             className="custom-input"
             placeholder="Email"
             required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="form-group">
@@ -56,6 +69,8 @@ function SignInSignUp() {
             className="custom-input"
             placeholder="Password"
             required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         {isSignIn && (
@@ -79,11 +94,8 @@ function SignInSignUp() {
 
       <Divider style={{ margin: '10px 0' }}>or</Divider>
 
-      <Button variant="contained" startIcon={<GoogleIcon />} fullWidth className="social-btn google"  style={{ color: 'white', backgroundColor: "blue"}}>
+      <Button variant="contained" startIcon={<GoogleIcon />} fullWidth className="social-btn google" style={{ color: 'white', backgroundColor: "blue" }}>
         {isSignIn ? 'Sign in with Google' : 'Sign up with Google'}
-      </Button>
-      <Button variant="outlined" startIcon={<FacebookIcon />} fullWidth className="social-btn facebook" style={{  color: 'white', marginTop: '10px',backgroundColor: "blue" }}>
-        {isSignIn ? 'Sign in with Facebook' : 'Sign up with Facebook'}
       </Button>
     </Container>
   );
